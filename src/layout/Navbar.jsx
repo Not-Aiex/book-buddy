@@ -10,7 +10,9 @@ export default function Navbar() {
       <nav>
         <NavLink to="/books">Books</NavLink>
         {token ? (
-          <a onClick={() => logout()}>Log out</a>
+          <a href="#" onClick={() => logout()}>
+            Log out
+          </a>
         ) : (
           <>
             <NavLink to="/register">Register</NavLink>

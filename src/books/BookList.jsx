@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../auth/AuthContext";
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 
 export default function BookList({ books, syncBooks }) {
   return (
@@ -15,7 +15,7 @@ export default function BookList({ books, syncBooks }) {
 function Book({ book }) {
   return (
     <li>
-      <NavLink to={"/books/" + book.id}>{book.name}</NavLink>
+      <Link to={"/books/" + book.id}>{book.title}</Link>
     </li>
   );
 }

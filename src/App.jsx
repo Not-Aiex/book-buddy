@@ -7,7 +7,7 @@ import Book from "./books/Book.jsx";
 
 import { Route, Routes } from "react-router";
 
-export default function Appp() {
+export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>

@@ -10,12 +10,13 @@ export default function Login() {
   const [error, setError] = useState(null);
   const tryLogin = async (formData) => {
     setError(null);
-    const username = formData.get("username");
+    const email = formData.get("email");
     const password = formData.get("password");
     try {
-      await login({ username, password });
+      await login({ email, password });
       nav("/books");
     } catch (error) {
+      console.log("here");
       setError(error.message);
     }
   };
@@ -25,8 +26,8 @@ export default function Login() {
       <h1>Log in to your account</h1>
       <form action={tryLogin}>
         <label>
-          Username
-          <input type="text" name="username" required />
+          Email
+          <input type="email" name="email" required />
         </label>
         <label>
           Password
@@ -35,7 +36,7 @@ export default function Login() {
         <button>Login</button>
         {error && <p>{error}</p>}
       </form>
-      <a onClick={() => setPage("register")}>Register here.</a>
+      <Link to="/register">Register here.</Link>
     </>
   );
 }
