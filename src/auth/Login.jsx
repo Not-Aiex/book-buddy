@@ -1,0 +1,41 @@
+import { useState } from "react";
+import { useAuth } from "./AuthContext";
+
+import { Link, useNavigate } from "react-router";
+
+export default function Login() {
+  const { login } = useAuth();
+  const nav = useNavigate();
+
+  const [error, setError] = useState(null);
+  const tryLogin = async (formData) => {
+    setError(null);
+    const username = formData.get("username");
+    const password = formData.get("password");
+    try {
+      await login({ username, password });
+      nav("/books");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  return (
+    <>
+      <h1>Log in to your account</h1>
+      <form action={tryLogin}>
+        <label>
+          Username
+          <input type="text" name="username" required />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" required />
+        </label>
+        <button>Login</button>
+        {error && <p>{error}</p>}
+      </form>
+      <a onClick={() => setPage("register")}>Register here.</a>
+    </>
+  );
+}
