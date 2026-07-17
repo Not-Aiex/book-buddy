@@ -9,10 +9,12 @@ export default function Register() {
   const [error, setError] = useState(null);
   const tryRegister = async (formData) => {
     setError(null);
+    const firstName = formData.get("firstname");
+    const lastName = formData.get("lastname");
     const email = formData.get("email");
     const password = formData.get("password");
     try {
-      await register({ email, password });
+      await register({ firstName, lastName, email, password });
       nav("/books");
     } catch (error) {
       setError(error.message);
@@ -23,6 +25,14 @@ export default function Register() {
     <>
       <h1>Register for an account</h1>
       <form action={tryRegister}>
+        <label>
+          First Name
+          <input type="text" name="firstname" />
+        </label>
+        <label>
+          Last Name
+          <input type="text" name="lastname" />
+        </label>
         <label>
           Email
           <input type="text" name="email" required />

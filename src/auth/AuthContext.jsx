@@ -31,7 +31,9 @@ export function AuthProvider({ children }) {
       throw Error(result.message);
     }
     setToken(result.token);
+    console.log("result token is: " + token);
   };
+
   const logout = () => setToken(null);
   const value = { token, register, login, logout };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

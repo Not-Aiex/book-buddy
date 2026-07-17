@@ -5,18 +5,30 @@ export default function Navbar() {
   const { token, logout } = useAuth();
 
   return (
-    <header>
+    <header id="navbar">
+      <img className="navbarImage" src="/books.png" />
       <p>Book Buddy</p>
-      <nav>
-        <NavLink to="/books">Books</NavLink>
+      <nav id="navlinks">
+        <NavLink className="links" to="/books">
+          Books
+        </NavLink>
         {token ? (
-          <a href="#" onClick={() => logout()}>
-            Log out
-          </a>
+          <>
+            <a href="#" onClick={() => logout()}>
+              Log out
+            </a>
+            <NavLink className="links" to="/account">
+              Profile
+            </NavLink>
+          </>
         ) : (
           <>
-            <NavLink to="/register">Register</NavLink>
-            <NavLink to="/login">Login</NavLink>
+            <NavLink className="links" to="/register">
+              Register
+            </NavLink>
+            <NavLink className="links" to="/login">
+              Login
+            </NavLink>
           </>
         )}
       </nav>

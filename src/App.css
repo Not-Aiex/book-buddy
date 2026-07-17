@@ -11,3 +11,57 @@ body {
 }
 
 /* Add your own custom styles here */
+.bookImage {
+  max-width: 72px;
+  height: auto;
+}
+
+.navbarImage {
+  max-height: 32px;
+  width: auto;
+}
+
+.links {
+  color: #76a6d3;
+}
+
+#navbar {
+  color: #76a6d3;
+  display: flex;
+  gap: 1ch;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid black;
+}
+
+#navlinks {
+  display: flex;
+  gap: 1ch;
+}
+
+main {
+  display: grid;
+  gap: 0.1rem;
+}
+
+#book {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  max-width: 60ch;
+  margin: auto auto;
+  padding: 1rem;
+}

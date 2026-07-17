@@ -22,6 +22,24 @@ export async function getBook(id) {
   }
 }
 
+export async function getProfile(token) {
+  console.log("Get profile: " + token);
+  try {
+    const response = await fetch(API + "/users/me", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+    console.log("books token: " + token);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 export async function getReservations(token) {
   if (!token) {
     throw Error("You must be signed in to get your reservations list.");
@@ -41,7 +59,7 @@ export async function getReservations(token) {
   return result;
 }
 
-export async function reserveBook(token, id) {
+export async function reserveBook(token, bookId) {
   if (!token) {
     throw Error("You must be signed in to reserve a book.");
   }
@@ -51,12 +69,15 @@ export async function reserveBook(token, id) {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
     },
-    body: JSON.stringify(id),
+    body: JSON.stringify({ bookId }),
   });
+  const result = await response.json();
   if (!response.ok) {
-    const result = await response.json();
+    console.log(result);
+    console.log("response " + response);
     throw Error(result.message);
   }
+  return result;
 }
 
 export async function returnBook(token, id) {

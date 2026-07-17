@@ -32,8 +32,10 @@ export default function Book() {
   }
   // Formatting for the book page
   return (
-    <>
-      <img src={book.coverimage} />
+    <div id="book">
+      <figure>
+        <img className="bookImage" src={book.coverimage} />
+      </figure>
       <section>
         <h1>{book.name}</h1>
         <p>Written by {book.author}</p>
@@ -41,6 +43,6 @@ export default function Book() {
         {token && <button onClick={tryReserve}>Reserve this book</button>}
         {error && <p>{error}</p>}
       </section>
-    </>
+    </div>
   );
 }
