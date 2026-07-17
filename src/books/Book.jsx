@@ -22,7 +22,7 @@ export default function Book() {
     setError(null);
     try {
       await reserveBook(token, book.id);
-      nav("/books"); //navigate to reservation list later
+      nav("/account"); //navigate to reservation list later
     } catch (error) {
       setError(error.message);
     }

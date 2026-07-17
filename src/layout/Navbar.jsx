@@ -14,7 +14,7 @@ export default function Navbar() {
         </NavLink>
         {token ? (
           <>
-            <a href="#" onClick={() => logout()}>
+            <a id="logout" href="#" onClick={() => logout()}>
               Log out
             </a>
             <NavLink className="links" to="/account">

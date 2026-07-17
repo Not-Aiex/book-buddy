@@ -14,16 +14,21 @@ export default function BookList({ books, syncBooks }) {
 
 function Book({ book }) {
   return (
-    <li>
-      <figure>
+    <li className="book">
+      <figure id="bookImage">
         <img
           className="bookImage"
           alt={"Cover image of " + book.title}
           src={book.coverimage}
         />
       </figure>
-      <Link to={"/books/" + book.id}>{book.title}</Link>
-      <p>{book.description}</p>
+      <div>
+        <Link className="bookListing" to={"/books/" + book.id}>
+          {book.title}
+        </Link>
+        <p id="author">Written by: {book.author}</p>
+        <p>{book.description}</p>
+      </div>
     </li>
   );
 }

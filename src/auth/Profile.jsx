@@ -10,32 +10,16 @@ export default function Profile() {
   const [error, setError] = useState(null);
   const [reservations, setReservations] = useState([]);
   useEffect(() => {
-    // if (!token) {
-    //   throw Error("You are not signed in.");
-    //   return;
-    // }
+    if (!token) {
+      throw Error("You are not signed in.");
+      return;
+    }
     console.log("token is: " + token);
     const syncReservations = async () => {
       const data = await getProfile(token);
       const res = await getReservations(token);
       setProfile(data);
       setReservations(res);
-      //   try {
-      //     console.log("profile token: " + token);
-      //     const data = await getProfile(token);
-      //     console.log("here" + data);
-      //     setProfile(data);
-      //   } catch (error) {
-      //     console.log("Failed to load profile");
-      //     setError(error.message);
-      //   }
-      //   try {
-      //     const data = await getReservations(token);
-      //     setReservations(data);
-      //   } catch (error) {
-      //     console.log("Failed to load reservations");
-      //     setError(error.message);
-      //   }
     };
     syncReservations();
   }, [token]);
@@ -55,11 +39,19 @@ export default function Profile() {
         <p>You don't have any reserved books.</p>
       ) : (
         <ul>
+          <li className="headerreservations" id="headerreservations">
+            <p id="headerreservations">Cover image</p>
+            <p id="headerreservations">Book title</p>
+            <p id="headerreservations">Author</p>
+            <p id="headerreservations">Return</p>
+          </li>
           {reservations.map((reservation) => (
-            <li key={reservation.id}>
-              <p>
-                {reservation.title} written by {reservation.author}
-              </p>
+            <li className="reservations" key={reservation.id}>
+              <img id="reservationimage" src={reservation.coverimage} />
+              <Link className="bookListing" to={"/books/" + reservation.bookid}>
+                {reservation.title}
+              </Link>
+              <p id="reservationimage">{reservation.author}</p>
               <button
                 onClick={async () => {
                   await returnBook(token, reservation.id);

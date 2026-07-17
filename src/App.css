@@ -35,6 +35,10 @@ body {
   border-bottom: 1px solid black;
 }
 
+#logout {
+  color: #76a6d3;
+}
+
 #navlinks {
   display: flex;
   gap: 1ch;
@@ -53,6 +57,7 @@ main {
 figure {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 section {
@@ -64,4 +69,55 @@ section {
   max-width: 60ch;
   margin: auto auto;
   padding: 1rem;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.5ch;
+  background: lightgray;
+  margin: 2ch;
+}
+
+.bookListing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #76a6d3;
+  font-size: larger;
+  font-weight: bolder;
+  margin: auto 1.5ch;
+}
+
+#author {
+  font-weight: bold;
+}
+
+.headerreservations {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+#headerreservations {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.reservations {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  margin-bottom: 2ch;
+  justify-content: center;
+  align-items: center;
+}
+
+#reservationimage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 60px;
+  margin: auto 1.5ch;
 }
